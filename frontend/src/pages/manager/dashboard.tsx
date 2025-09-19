@@ -101,7 +101,7 @@ const ManagerDashboard = () => {
         </Badge>
       </Box>
 
-      <Typography variant="h5" gutterBottom>
+      <Typography variant="h5" gutterBottom data-testid="manager-dashboard-title">
         My Team's Leave Requests
       </Typography>
 

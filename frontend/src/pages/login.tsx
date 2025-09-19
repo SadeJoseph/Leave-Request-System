@@ -72,6 +72,7 @@ localStorage.setItem("role", roleName);
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            data-testid="login-email"
           />
           <TextField
             fullWidth
@@ -80,6 +81,7 @@ localStorage.setItem("role", roleName);
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            data-testid="login-password"
           />
 
           {error && (
@@ -94,6 +96,7 @@ localStorage.setItem("role", roleName);
             variant="contained"
             sx={{ mt: 3 }}
             disabled={loading}
+            data-testid="login-submit"
           >
             {loading ? "Logging in..." : "Login"}
           </Button>

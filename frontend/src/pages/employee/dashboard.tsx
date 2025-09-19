@@ -62,7 +62,7 @@ const EmployeeDashboard = () => {
   return (
     <Layout role="employee">
       <Box sx={{ mb: 3 }}>
-        <Badge badgeContent={pendingCount} color="error">
+        <Badge badgeContent={pendingCount} color="error" data-testid="pending-badge">
           <Typography
             variant="h6"
             sx={{ p: 2, bgcolor: "orange", borderRadius: 2, color: "#fff" }}
@@ -72,7 +72,7 @@ const EmployeeDashboard = () => {
         </Badge>
       </Box>
 
-      <Table>
+      <Table data-testid="leave-requests-table">
         <TableHead>
           <TableRow>
             <TableCell>Leave Type</TableCell>

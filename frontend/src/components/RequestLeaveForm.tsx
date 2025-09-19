@@ -100,6 +100,7 @@ const RequestLeaveForm = () => {
       component="form"
       onSubmit={handleSubmit}
       sx={{ maxWidth: 400, mx: "auto", mt: 4 }}
+      data-testid="request-leave-form"
     >
       <Typography variant="h5" gutterBottom>
         Request Leave

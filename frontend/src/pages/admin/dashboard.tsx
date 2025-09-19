@@ -111,7 +111,7 @@ const AdminDashboard = () => {
           </Typography>
         </Badge>
 
-        <Button variant="contained" color="error" onClick={handleResetAllBalances}>
+        <Button variant="contained" color="error" onClick={handleResetAllBalances} data-testid="reset-balances">
           Reset All Balances
         </Button>
       </Box>

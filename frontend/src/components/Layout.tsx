@@ -43,6 +43,7 @@ const Layout: React.FC<LayoutProps> = ({ children, role }) => {
             color="inherit"
             onClick={() => setDrawerOpen(true)}
             sx={{ mr: 2 }}
+            data-testid="menu-button"
           >
             <MenuIcon />
           </IconButton>
@@ -66,14 +67,14 @@ const Layout: React.FC<LayoutProps> = ({ children, role }) => {
 
     <List>
       <ListItem disablePadding>
-        <ListItemButton onClick={() => handleNavClick(`/${role}/dashboard`)}>
+        <ListItemButton onClick={() => handleNavClick(`/${role}/dashboard`)} data-testid="nav-dashboard">
           <ListItemText primary="Dashboard" />
         </ListItemButton>
       </ListItem>
 
       {(role === "admin" || role === "manager") && (
         <ListItem disablePadding>
-          <ListItemButton onClick={() => handleNavClick(`/${role}/employees`)}>
+          <ListItemButton onClick={() => handleNavClick(`/${role}/employees`)} data-testid="nav-employees">
             <ListItemText primary="Employees" />
           </ListItemButton>
         </ListItem>
@@ -81,7 +82,7 @@ const Layout: React.FC<LayoutProps> = ({ children, role }) => {
 
 {(role === "manager" || role === "employee") && (
   <ListItem disablePadding>
-    <ListItemButton onClick={() => handleNavClick(`/request-leave`)}>
+    <ListItemButton onClick={() => handleNavClick(`/request-leave`)} data-testid="nav-request-leave">
       <ListItemText primary="Request Leave" />
     </ListItemButton>
   </ListItem>
@@ -89,7 +90,7 @@ const Layout: React.FC<LayoutProps> = ({ children, role }) => {
 
       {role === "admin" && (
     <ListItem disablePadding>
-      <ListItemButton onClick={() => handleNavClick(`/${role}/management`)}>
+      <ListItemButton onClick={() => handleNavClick(`/${role}/management`)} data-testid="nav-management">
         <ListItemText primary="Management" />
       </ListItemButton>
     </ListItem>
