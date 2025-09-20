@@ -183,7 +183,7 @@ const roleJson = await roleRes.json();
             Add
           </Button>
         </Box>
-        <TableContainer component={Paper} sx={{ mb: 4 }}>
+        <TableContainer component={Paper} sx={{ mb: 4 }} >
           <Table>
             <TableHead>
               <TableRow>
@@ -192,7 +192,7 @@ const roleJson = await roleRes.json();
                 <TableCell>Actions</TableCell>
               </TableRow>
             </TableHead>
-            <TableBody>
+            <TableBody data-testid="roles-table">
               {roles.map((role) => (
                 <TableRow key={role.id}>
                   <TableCell>{role.id}</TableCell>
@@ -224,7 +224,7 @@ const roleJson = await roleRes.json();
             Add
           </Button>
         </Box>
-        <TableContainer component={Paper} sx={{ mb: 4 }}>
+        <TableContainer component={Paper} sx={{ mb: 4 }} >
           <Table>
             <TableHead>
               <TableRow>
@@ -233,7 +233,7 @@ const roleJson = await roleRes.json();
                 <TableCell>Actions</TableCell>
               </TableRow>
             </TableHead>
-            <TableBody>
+            <TableBody data-testid="departments-table">
               {departments.map((dep) => (
                 <TableRow key={dep.id}>
                   <TableCell>{dep.id}</TableCell>

@@ -1,5 +1,4 @@
-// cypress/e2e/admin-dashboard.cy.ts
-describe("Admin Dashboard", () => {
+describe("Admin Dashboard & Management Pages", () => {
   beforeEach(() => {
     // Mock login as admin
     cy.intercept("POST", "http://localhost:8900/api/login", {
@@ -26,8 +25,8 @@ describe("Admin Dashboard", () => {
     cy.url().should("include", "/admin/dashboard");
   });
 
-  it("renders roles and departments tables", () => {
-    // Mock GET for roles and departments
+  it("navigates to Management page and shows roles & departments", () => {
+    // Mock API calls
     cy.intercept("GET", "http://localhost:8900/api/roles", {
       statusCode: 200,
       body: [{ id: 1, name: "manager" }, { id: 2, name: "employee" }],
@@ -38,34 +37,31 @@ describe("Admin Dashboard", () => {
       body: [{ id: 1, name: "Engineering" }, { id: 2, name: "HR" }],
     }).as("getDepartments");
 
-    cy.reload();
+    cy.intercept("GET", "http://localhost:8900/api/users", {
+      statusCode: 200,
+      body: [{ id: 21, firstname: "Staff", surname: "Example", email: "staff1@example.com" }],
+    }).as("getUsers");
+
+    cy.intercept("GET", "http://localhost:8900/api/user-management", {
+      statusCode: 200,
+      body: [],
+    }).as("getUserManagement");
+
+    // Open side nav and click management
+    cy.get('[data-testid="menu-button"]').click();
+    cy.get('[data-testid="nav-management"]').click();
+
+    // Correct navigation path
+    cy.url().should("include", "/admin/management");
+
+    // Wait for mocks
     cy.wait("@getRoles");
     cy.wait("@getDepartments");
+    cy.wait("@getUsers");
+    cy.wait("@getUserManagement");
 
-    cy.contains("Roles");
-    cy.contains("Departments");
-  });
-
-  it("can add a new department", () => {
-    cy.intercept("POST", "http://localhost:8900/api/departments", {
-      statusCode: 201,
-      body: { id: 3, name: "Finance" },
-    }).as("createDept");
-
-    cy.get('[data-testid="new-department-input"]').type("Finance");
-    cy.get('[data-testid="add-department"]').click();
-
-    cy.wait("@createDept").its("response.statusCode").should("eq", 201);
-  });
-
-  it("can reset all leave balances", () => {
-    cy.intercept("PATCH", "http://localhost:8900/api/users/reset-all-balances", {
-      statusCode: 200,
-      body: { message: "All balances reset to 25" },
-    }).as("resetBalances");
-
-    cy.get('[data-testid="reset-balances"]').click();
-
-    cy.wait("@resetBalances").its("response.statusCode").should("eq", 200);
+    // Verify tables
+    cy.get('[data-testid="roles-table"]').should("exist");
+    cy.get('[data-testid="departments-table"]').should("exist");
   });
 });

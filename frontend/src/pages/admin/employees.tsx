@@ -151,6 +151,7 @@ setRoles(Array.isArray(roleJson) ? roleJson : roleJson.data || []);
           color="primary"
           sx={{ mb: 2 }}
           onClick={() => setOpen(true)}
+          data-testid="add-employee-button"
         >
           + Add Employee
         </Button>
@@ -168,7 +169,7 @@ setRoles(Array.isArray(roleJson) ? roleJson : roleJson.data || []);
                 <TableCell align="center">Actions</TableCell>
               </TableRow>
             </TableHead>
-            <TableBody>
+            <TableBody data-testid="employees-table">
               {employees.map((emp) => (
                 <TableRow key={emp.id}>
                   <TableCell>{emp.id}</TableCell>
@@ -202,6 +203,7 @@ setRoles(Array.isArray(roleJson) ? roleJson : roleJson.data || []);
               fullWidth
               value={newUser.firstname}
               onChange={(e) => handleInputChange("firstname", e.target.value)}
+              data-testid="employee-firstname"
             />
             <TextField
               margin="dense"
@@ -209,6 +211,7 @@ setRoles(Array.isArray(roleJson) ? roleJson : roleJson.data || []);
               fullWidth
               value={newUser.surname}
               onChange={(e) => handleInputChange("surname", e.target.value)}
+              data-testid="employee-surname"
             />
             <TextField
               margin="dense"
@@ -217,6 +220,7 @@ setRoles(Array.isArray(roleJson) ? roleJson : roleJson.data || []);
               fullWidth
               value={newUser.email}
               onChange={(e) => handleInputChange("email", e.target.value)}
+                data-testid="employee-email"
             />
             <TextField
               margin="dense"
@@ -225,6 +229,7 @@ setRoles(Array.isArray(roleJson) ? roleJson : roleJson.data || []);
               fullWidth
               value={newUser.password}
               onChange={(e) => handleInputChange("password", e.target.value)}
+                data-testid="employee-password"
             />
             <Select
               fullWidth
@@ -232,10 +237,11 @@ setRoles(Array.isArray(roleJson) ? roleJson : roleJson.data || []);
               onChange={(e) => handleInputChange("roleId", e.target.value)}
               displayEmpty
               sx={{ mt: 2 }}
+              data-testid="employee-role"
             >
-              <MenuItem value="">Select Role</MenuItem>
+              <MenuItem value="" >Select Role</MenuItem>
               {roles.map((role) => (
-                <MenuItem key={role.id} value={role.id}>
+                <MenuItem key={role.id} value={role.id} >
                   {role.name}
                 </MenuItem>
               ))}
@@ -246,10 +252,11 @@ setRoles(Array.isArray(roleJson) ? roleJson : roleJson.data || []);
               onChange={(e) => handleInputChange("departmentId", e.target.value)}
               displayEmpty
               sx={{ mt: 2 }}
+              data-testid="employee-department"
             >
-              <MenuItem value="">Select Department</MenuItem>
+              <MenuItem value="" >Select Department</MenuItem>
               {departments.map((dep) => (
-                <MenuItem key={dep.id} value={dep.id}>
+                <MenuItem key={dep.id} value={dep.id} >
                   {dep.name}
                 </MenuItem>
               ))}
@@ -271,6 +278,7 @@ setRoles(Array.isArray(roleJson) ? roleJson : roleJson.data || []);
               onClick={handleSaveNewUser}
               variant="contained"
               color="primary"
+              data-testid="submit-employee"
             >
               Save
             </Button>
