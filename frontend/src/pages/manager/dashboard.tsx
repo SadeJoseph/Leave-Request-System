@@ -148,6 +148,7 @@ const ManagerDashboard = () => {
                         size="small"
                         color="success"
                         onClick={() => handleUpdateStatus(r.id, "Approved")}
+                        data-testid={`approve-button-${r.id}`}
                       >
                         Approve
                       </Button>
@@ -156,6 +157,7 @@ const ManagerDashboard = () => {
                         color="error"
                         onClick={() => handleUpdateStatus(r.id, "Rejected")}
                         sx={{ ml: 1 }}
+                        data-testid={`reject-button-${r.id}`}
                       >
                         Reject
                       </Button>

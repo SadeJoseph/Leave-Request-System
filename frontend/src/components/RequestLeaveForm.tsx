@@ -118,6 +118,7 @@ const RequestLeaveForm = () => {
         inputProps={{ min: today }}
         value={startDate}
         onChange={(e) => setStartDate(e.target.value)}
+        data-testid="start-date-input"
       />
 
       <TextField
@@ -129,12 +130,13 @@ const RequestLeaveForm = () => {
         inputProps={{ min: startDate || today }}
         value={endDate}
         onChange={(e) => setEndDate(e.target.value)}
+        data-testid="end-date-input"
       />
 
       {/* Show live calculated weekdays */}
       {days > 0 && (
         <Typography variant="body2" sx={{ mt: 1, mb: 2 }}>
-          Total Days (Mon–Fri): <strong>{days}</strong>
+          Total Days (Mon-Fri): <strong>{days}</strong>
         </Typography>
       )}
 
@@ -145,14 +147,16 @@ const RequestLeaveForm = () => {
         multiline
         rows={3}
         value={reason}
-        onChange={(e) => setReason(e.target.value)}
+        onChange={(e) => setReason(e.target.value)
+        }
+        data-testid="reason-input"
       />
 
-      <Select fullWidth value="Annual Leave" disabled sx={{ mt: 2, mb: 2 }}>
+      <Select fullWidth value="Annual Leave" disabled sx={{ mt: 2, mb: 2 }} data-testid="leave-type-select">
         <MenuItem value="Annual Leave">Annual Leave</MenuItem>
       </Select>
 
-      <Button type="submit" variant="contained" color="primary" fullWidth>
+      <Button type="submit" variant="contained" color="primary" fullWidth data-testid="submit-request">
         Submit Request
       </Button>
     </Box>
