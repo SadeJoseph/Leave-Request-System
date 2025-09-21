@@ -41,7 +41,7 @@ const ManagerEmployeesPage = () => {
           My Team
         </Typography>
 
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} aria-label="Manager Employees Table">
           <Table>
             <TableHead>
               <TableRow>

@@ -91,17 +91,19 @@ const ManagerDashboard = () => {
           badgeContent={pendingCount}
           color="error"
           anchorOrigin={{ vertical: "top", horizontal: "right" }}
+          data-testid="pending-badge"
         >
           <Typography
             variant="h6"
             sx={{ p: 2, bgcolor: "orange", borderRadius: 2, color: "#fff" }}
+            aria-label="Pending Requests"
           >
             Pending Requests
           </Typography>
         </Badge>
       </Box>
 
-      <Typography variant="h5" gutterBottom data-testid="manager-dashboard-title">
+      <Typography variant="h5" gutterBottom data-testid="manager-dashboard-title" aria-label="My Team's Leave Requests">
         My Team's Leave Requests
       </Typography>
 
@@ -149,6 +151,7 @@ const ManagerDashboard = () => {
                         color="success"
                         onClick={() => handleUpdateStatus(r.id, "Approved")}
                         data-testid={`approve-button-${r.id}`}
+                        aria-label="Approve Button"
                       >
                         Approve
                       </Button>
@@ -158,6 +161,7 @@ const ManagerDashboard = () => {
                         onClick={() => handleUpdateStatus(r.id, "Rejected")}
                         sx={{ ml: 1 }}
                         data-testid={`reject-button-${r.id}`}
+                          
                       >
                         Reject
                       </Button>

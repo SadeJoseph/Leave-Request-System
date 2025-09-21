@@ -178,8 +178,9 @@ const roleJson = await roleRes.json();
             label="New Role"
             value={newRole}
             onChange={(e) => setNewRole(e.target.value)}
+            aria-label="Input New Role"
           />
-          <Button onClick={addRole} variant="contained" sx={{ ml: 2 }}>
+          <Button onClick={addRole} variant="contained" sx={{ ml: 2 }} aria-label="Add Role Button">
             Add
           </Button>
         </Box>
@@ -192,7 +193,7 @@ const roleJson = await roleRes.json();
                 <TableCell>Actions</TableCell>
               </TableRow>
             </TableHead>
-            <TableBody data-testid="roles-table">
+            <TableBody data-testid="roles-table" aria-label="Roles Table">
               {roles.map((role) => (
                 <TableRow key={role.id}>
                   <TableCell>{role.id}</TableCell>
@@ -201,6 +202,7 @@ const roleJson = await roleRes.json();
                     <IconButton
                       color="error"
                       onClick={() => deleteRole(role.id)}
+                      aria-label={`Delete Role ${role.name}`}
                     >
                       <DeleteIcon />
                     </IconButton>
@@ -219,8 +221,9 @@ const roleJson = await roleRes.json();
             label="New Department"
             value={newDept}
             onChange={(e) => setNewDept(e.target.value)}
+            aria-label="Input New Department"
           />
-          <Button onClick={addDept} variant="contained" sx={{ ml: 2 }}>
+          <Button onClick={addDept} variant="contained" sx={{ ml: 2 }} aria-label="Add Department Button">
             Add
           </Button>
         </Box>
@@ -233,7 +236,7 @@ const roleJson = await roleRes.json();
                 <TableCell>Actions</TableCell>
               </TableRow>
             </TableHead>
-            <TableBody data-testid="departments-table">
+            <TableBody data-testid="departments-table" aria-label="Departments Table">
               {departments.map((dep) => (
                 <TableRow key={dep.id}>
                   <TableCell>{dep.id}</TableCell>
@@ -242,6 +245,7 @@ const roleJson = await roleRes.json();
                     <IconButton
                       color="error"
                       onClick={() => deleteDept(dep.id)}
+                      aria-label="Delete Department Button"
                     >
                       <DeleteIcon />
                     </IconButton>
@@ -260,6 +264,7 @@ const roleJson = await roleRes.json();
     onChange={(e) => setSelectedUser(e.target.value)}
     displayEmpty
     sx={{ mr: 2 }}
+    aria-label="Select User"
   >
     <MenuItem value="">Select User</MenuItem>
     {users
@@ -282,6 +287,7 @@ const roleJson = await roleRes.json();
     onChange={(e) => setSelectedManager(e.target.value)}
     displayEmpty
     sx={{ mr: 2 }}
+    aria-label="Select Manager"
   >
     <MenuItem value="">Select Manager</MenuItem>
     {users
@@ -293,7 +299,7 @@ const roleJson = await roleRes.json();
       ))}
   </Select>
 
-  <Button onClick={assignManager} variant="contained">
+  <Button onClick={assignManager} variant="contained" aria-label="Assign Manager Button">
     Assign
   </Button>
 </Box>
@@ -310,7 +316,7 @@ const roleJson = await roleRes.json();
         <TableCell>Actions</TableCell>
       </TableRow>
     </TableHead>
-   <TableBody>
+   <TableBody aria-label="Manager Assignments Table">
   {assignments.map((a) => (
     <TableRow key={a.id}>
       <TableCell>{a.id}</TableCell>
@@ -325,6 +331,7 @@ const roleJson = await roleRes.json();
         <IconButton
           color="error"
           onClick={() => deleteAssignment(a.id)}
+          aria-label={`Delete Assignment for ${a.user?.firstname} ${a.user?.surname}`}
         >
           <DeleteIcon />
         </IconButton>

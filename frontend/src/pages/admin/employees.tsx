@@ -169,7 +169,7 @@ setRoles(Array.isArray(roleJson) ? roleJson : roleJson.data || []);
                 <TableCell align="center">Actions</TableCell>
               </TableRow>
             </TableHead>
-            <TableBody data-testid="employees-table">
+            <TableBody data-testid="employees-table" aria-label="Employees Table">
               {employees.map((emp) => (
                 <TableRow key={emp.id}>
                   <TableCell>{emp.id}</TableCell>
@@ -182,6 +182,7 @@ setRoles(Array.isArray(roleJson) ? roleJson : roleJson.data || []);
                   <TableCell align="center">
                     <IconButton
                       color="error"
+                      aria-label={`Delete employee ${emp.firstname} ${emp.surname}`} 
                       onClick={() => handleDeleteUser(emp.id)}
                     >
                       <DeleteIcon />
@@ -194,7 +195,7 @@ setRoles(Array.isArray(roleJson) ? roleJson : roleJson.data || []);
         </TableContainer>
 
         {/* Add User Modal */}
-        <Dialog open={open} onClose={() => setOpen(false)}>
+        <Dialog open={open} onClose={() => setOpen(false)} aria-label="Add New User Dialog">
           <DialogTitle>Add New User</DialogTitle>
           <DialogContent>
             <TextField
@@ -204,6 +205,7 @@ setRoles(Array.isArray(roleJson) ? roleJson : roleJson.data || []);
               value={newUser.firstname}
               onChange={(e) => handleInputChange("firstname", e.target.value)}
               data-testid="employee-firstname"
+              aria-label="Employee First Name" 
             />
             <TextField
               margin="dense"
@@ -212,7 +214,8 @@ setRoles(Array.isArray(roleJson) ? roleJson : roleJson.data || []);
               value={newUser.surname}
               onChange={(e) => handleInputChange("surname", e.target.value)}
               data-testid="employee-surname"
-            />
+              aria-label="Employee Surname" 
+              />
             <TextField
               margin="dense"
               label="Email"
@@ -221,6 +224,7 @@ setRoles(Array.isArray(roleJson) ? roleJson : roleJson.data || []);
               value={newUser.email}
               onChange={(e) => handleInputChange("email", e.target.value)}
                 data-testid="employee-email"
+                aria-label="input Employee Email"
             />
             <TextField
               margin="dense"
@@ -230,6 +234,7 @@ setRoles(Array.isArray(roleJson) ? roleJson : roleJson.data || []);
               value={newUser.password}
               onChange={(e) => handleInputChange("password", e.target.value)}
                 data-testid="employee-password"
+                aria-label="input Employee Password"
             />
             <Select
               fullWidth
@@ -238,6 +243,7 @@ setRoles(Array.isArray(roleJson) ? roleJson : roleJson.data || []);
               displayEmpty
               sx={{ mt: 2 }}
               data-testid="employee-role"
+              aria-label=" Select Employee Role"
             >
               <MenuItem value="" >Select Role</MenuItem>
               {roles.map((role) => (
@@ -279,6 +285,7 @@ setRoles(Array.isArray(roleJson) ? roleJson : roleJson.data || []);
               variant="contained"
               color="primary"
               data-testid="submit-employee"
+              aria-label="Save New User Button"
             >
               Save
             </Button>

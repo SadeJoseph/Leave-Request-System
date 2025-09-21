@@ -66,13 +66,14 @@ const EmployeeDashboard = () => {
           <Typography
             variant="h6"
             sx={{ p: 2, bgcolor: "orange", borderRadius: 2, color: "#fff" }}
+            aria-label="My Leave Requests"
           >
             My Leave Requests
           </Typography>
         </Badge>
       </Box>
 
-      <Table data-testid="leave-requests-table">
+      <Table data-testid="leave-requests-table" aria-label="Leave Requests Table">
         <TableHead>
           <TableRow>
             <TableCell>Leave Type</TableCell>

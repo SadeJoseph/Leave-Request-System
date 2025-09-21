@@ -54,7 +54,7 @@ export class Server {
       })
     );
 
-    // General API limiter (per IP)
+    //General API limiter (per IP)
     const apiLimiter = rateLimit({
       windowMs: 15 * 60 * 1000, // 15 minutes
       max: 1000, // safer default

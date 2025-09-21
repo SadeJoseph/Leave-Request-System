@@ -101,6 +101,7 @@ const RequestLeaveForm = () => {
       onSubmit={handleSubmit}
       sx={{ maxWidth: 400, mx: "auto", mt: 4 }}
       data-testid="request-leave-form"
+      aria-label="Request Leave Form" 
     >
       <Typography variant="h5" gutterBottom>
         Request Leave
@@ -119,6 +120,7 @@ const RequestLeaveForm = () => {
         value={startDate}
         onChange={(e) => setStartDate(e.target.value)}
         data-testid="start-date-input"
+        aria-label="Start Date Input" 
       />
 
       <TextField
@@ -131,6 +133,7 @@ const RequestLeaveForm = () => {
         value={endDate}
         onChange={(e) => setEndDate(e.target.value)}
         data-testid="end-date-input"
+        aria-label="End Date Input" 
       />
 
       {/* Show live calculated weekdays */}
@@ -150,13 +153,14 @@ const RequestLeaveForm = () => {
         onChange={(e) => setReason(e.target.value)
         }
         data-testid="reason-input"
+        aria-label="Reason Input" 
       />
 
-      <Select fullWidth value="Annual Leave" disabled sx={{ mt: 2, mb: 2 }} data-testid="leave-type-select">
+      <Select fullWidth value="Annual Leave" disabled sx={{ mt: 2, mb: 2 }} data-testid="leave-type-select" aria-label="Leave Type Select"> 
         <MenuItem value="Annual Leave">Annual Leave</MenuItem>
       </Select>
 
-      <Button type="submit" variant="contained" color="primary" fullWidth data-testid="submit-request">
+      <Button type="submit" variant="contained" color="primary" fullWidth data-testid="submit-request" aria-label="Submit Request Button">
         Submit Request
       </Button>
     </Box>

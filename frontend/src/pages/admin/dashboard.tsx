@@ -101,8 +101,8 @@ const AdminDashboard = () => {
           alignItems: "center",
         }}
       >
-        {/* 🔹 Pending Requests Badge */}
-        <Badge badgeContent={pendingCount} color="error">
+        {/* Pending Requests Badge */}
+        <Badge badgeContent={pendingCount} color="error" aria-label="Pending Requests Badge">
           <Typography
             variant="h6"
             sx={{ p: 2, bgcolor: "orange", borderRadius: 2, color: "#fff" }}
@@ -111,7 +111,7 @@ const AdminDashboard = () => {
           </Typography>
         </Badge>
 
-        <Button variant="contained" color="error" onClick={handleResetAllBalances} data-testid="reset-balances">
+        <Button variant="contained" color="error" onClick={handleResetAllBalances} data-testid="reset-balances" aria-label="reset all balances button">
           Reset All Balances
         </Button>
       </Box>
@@ -134,7 +134,7 @@ const AdminDashboard = () => {
             <TableCell>Action</TableCell>
           </TableRow>
         </TableHead>
-        <TableBody>
+        <TableBody aria-label="Leave Requests Table">
           {requests.map((r) => (
             <TableRow key={r.id}>
               <TableCell>{r.user?.id}</TableCell>
@@ -162,6 +162,7 @@ const AdminDashboard = () => {
                       size="small"
                       color="success"
                       onClick={() => handleUpdateStatus(r.id, "Approved")}
+                      aria-label="Approve Button"
                     >
                       Approve
                     </Button>
@@ -170,6 +171,7 @@ const AdminDashboard = () => {
                       color="error"
                       onClick={() => handleUpdateStatus(r.id, "Rejected")}
                       sx={{ ml: 1 }}
+                      aria-label="Reject Button"
                     >
                       Reject
                     </Button>

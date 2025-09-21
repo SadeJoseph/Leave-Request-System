@@ -44,6 +44,7 @@ const Layout: React.FC<LayoutProps> = ({ children, role }) => {
             onClick={() => setDrawerOpen(true)}
             sx={{ mr: 2 }}
             data-testid="menu-button"
+            aria-label="Open navigation menu" 
           >
             <MenuIcon />
           </IconButton>
@@ -53,7 +54,7 @@ const Layout: React.FC<LayoutProps> = ({ children, role }) => {
           <IconButton color="inherit">
             <AccountCircleIcon />
           </IconButton>
-          <Button color="inherit" onClick={handleLogout}>
+          <Button color="inherit" onClick={handleLogout} aria-label="Logout Button"> 
             Logout
           </Button>
         </Toolbar>
@@ -67,14 +68,14 @@ const Layout: React.FC<LayoutProps> = ({ children, role }) => {
 
     <List>
       <ListItem disablePadding>
-        <ListItemButton onClick={() => handleNavClick(`/${role}/dashboard`)} data-testid="nav-dashboard">
+        <ListItemButton onClick={() => handleNavClick(`/${role}/dashboard`)} data-testid="nav-dashboard" aria-label="Navigate to Dashboard">
           <ListItemText primary="Dashboard" />
         </ListItemButton>
       </ListItem>
 
       {(role === "admin" || role === "manager") && (
         <ListItem disablePadding>
-          <ListItemButton onClick={() => handleNavClick(`/${role}/employees`)} data-testid="nav-employees">
+          <ListItemButton onClick={() => handleNavClick(`/${role}/employees`)} data-testid="nav-employees" aria-label="Navigate to Employees"> 
             <ListItemText primary="Employees" />
           </ListItemButton>
         </ListItem>
@@ -82,7 +83,7 @@ const Layout: React.FC<LayoutProps> = ({ children, role }) => {
 
 {(role === "manager" || role === "employee") && (
   <ListItem disablePadding>
-    <ListItemButton onClick={() => handleNavClick(`/request-leave`)} data-testid="nav-request-leave">
+    <ListItemButton onClick={() => handleNavClick(`/request-leave`)} data-testid="nav-request-leave" aria-label="Navigate to Request Leave"> 
       <ListItemText primary="Request Leave" />
     </ListItemButton>
   </ListItem>
@@ -90,7 +91,7 @@ const Layout: React.FC<LayoutProps> = ({ children, role }) => {
 
       {role === "admin" && (
     <ListItem disablePadding>
-      <ListItemButton onClick={() => handleNavClick(`/${role}/management`)} data-testid="nav-management">
+      <ListItemButton onClick={() => handleNavClick(`/${role}/management`)} data-testid="nav-management" aria-label="Navigate to Management"> 
         <ListItemText primary="Management" />
       </ListItemButton>
     </ListItem>
